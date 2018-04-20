@@ -17,9 +17,7 @@ app.use((req, res, next) => {
   })
   next();
 })
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-})
+
 
 hbs.registerHelper("getCurrentYear", () => {
   return new Date().getFullYear()
@@ -35,7 +33,7 @@ app.set('view engine', 'hbs');
 app.get('/', (req, res) => {
   res.render('home', {
     pageTitle: "Home Page",
-    message: "Hola sinoras e signor"
+    message: "Hey there and welcome"
   })
 })
 
@@ -49,6 +47,11 @@ app.get('/bad', (req, res) => {
   res.send({
     errorMessage: "Unable to fulfill the request"
   })
+})
+
+
+app.get('/projects', (req, res) => {
+  res.render('projects')
 })
 
 app.listen(port, () => {
